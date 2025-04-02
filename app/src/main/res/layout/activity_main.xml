@@ -6,10 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:layout_marginTop="30dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#E60012"> 
+
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Super Mario Characters"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="start"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#FFFFFF"/> 
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_of_characters"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </androidx.appcompat.widget.LinearLayoutCompat>

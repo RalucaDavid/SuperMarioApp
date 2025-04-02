@@ -30,12 +30,8 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
     @Override
     public void onBindViewHolder(CharacterViewHolder holder, int position) {
         Character character = characterList.get(position);
-
-        // Setează textul pentru nume și descriere
         holder.nameTextView.setText(character.getName());
-        holder.descriptionTextView.setText(character.getDescription());
 
-        // Folosește Glide pentru a încărca imaginea din URL
         Glide.with(context)
                 .load(character.getImage())
                 .into(holder.characterImageView);
@@ -48,13 +44,11 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
 
     public static class CharacterViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView;
-        TextView descriptionTextView;
         ImageView characterImageView;
 
         public CharacterViewHolder(View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.character_name);
-            descriptionTextView = itemView.findViewById(R.id.character_description);
             characterImageView = itemView.findViewById(R.id.character_image);
         }
     }
