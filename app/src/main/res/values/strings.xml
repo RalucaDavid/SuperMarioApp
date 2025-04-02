@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SuperMarioApp</string>
+    <string name="back_button">Back</string>
+    <string name="character_image">Character Image</string>
 </resources>

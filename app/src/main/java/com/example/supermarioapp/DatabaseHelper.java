@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "supermario.db";
+    private static final String DATABASE_NAME = "supermario-db.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "characters";
 
@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + TABLE_NAME + " (id INTEGER PRIMARY KEY, name TEXT, description TEXT, image TEXT, webUrl TEXT)";
+        String createTable = "CREATE TABLE " + TABLE_NAME + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, role TEXT, description TEXT, image TEXT, webUrl TEXT)";
         db.execSQL(createTable);
 
         insertInitialData(db);
@@ -30,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put("name", "Mario");
+        values.put("role", "Hero");
         values.put("description", "The main character of the Super Mario series.");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/3/3e/MPSS_Mario.png/revision/latest?cb=20211102010317&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Mario");
@@ -37,6 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values.clear();
         values.put("name", "Luigi");
+        values.put("role", "Sidekick");
         values.put("description", "Mario's brother, often playing a supporting role.");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/7/76/SMPJ_Luigi.png/revision/latest?cb=20240911024916&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Luigi");
@@ -44,6 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values.clear();
         values.put("name", "Princess Peach");
+        values.put("role", "Damsel");
         values.put("description", "The princess of the Mushroom Kingdom.");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/d/db/Peach_%28Mario_Portal%29.png/revision/latest?cb=20230202133309&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Princess_Peach");
@@ -51,6 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values.clear();
         values.put("name", "Bowser");
+        values.put("role", "Villain");
         values.put("description", "The King of the Koopas, Mario's arch-nemesis.");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/4/4b/Bowser_%28Mario_Portal%29.png/revision/latest?cb=20230107054523&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Bowser");
@@ -58,6 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values.clear();
         values.put("name", "Goomba");
+        values.put("role", "Enemy");
         values.put("description", "The Goomba is a common enemy in the Mario series, often encountered in levels.");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/d/d5/GoombaNSMB.png/revision/latest?cb=20110724131649&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Goomba");
@@ -109,7 +114,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
-                        cursor.getString(4)
+                        cursor.getString(4),
+                        cursor.getString(5)
                 );
                 characterList.add(character);
             } while (cursor.moveToNext());
@@ -118,5 +124,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return characterList;
     }
+
+    public Character getCharacterById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, null, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                Character character = new Character(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5)
+                );
+
+                cursor.close();
+                db.close();
+                return character;
+            }
+            cursor.close();
+        }
+
+        db.close();
+        return null;
+    }
+
 
 }

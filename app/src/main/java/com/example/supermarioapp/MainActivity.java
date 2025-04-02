@@ -1,6 +1,8 @@
 package com.example.supermarioapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CharacterClick {
     private RecyclerView recyclerView;
     private CharacterAdapter characterAdapter;
     private List<Character> characterList;
@@ -29,7 +31,15 @@ public class MainActivity extends AppCompatActivity {
     private void loadCharacters() {
         characterList = dbHelper.getAllCharacters();
 
-        characterAdapter  = new CharacterAdapter(characterList, this);
+        characterAdapter  = new CharacterAdapter(characterList, this, this::onCharacterClick);
         recyclerView.setAdapter(characterAdapter);
+    }
+
+    @Override
+    public void onCharacterClick(int id) {
+        Character selectedCharacter = dbHelper.getCharacterById(id);
+        Intent intent = new Intent(this, CharacterDetailsActivity.class);
+        intent.putExtra("character", selectedCharacter);
+        startActivity(intent);
     }
 }
