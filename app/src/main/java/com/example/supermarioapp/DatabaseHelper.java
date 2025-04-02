@@ -22,6 +22,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (id INTEGER PRIMARY KEY, name TEXT, description TEXT, image TEXT, webUrl TEXT)";
         db.execSQL(createTable);
+
+        insertInitialData(db);
+    }
+
+    private void insertInitialData(SQLiteDatabase db) {
+        ContentValues values = new ContentValues();
+
+        values.put("name", "Mario");
+        values.put("description", "The main character of the Super Mario series.");
+        values.put("image", "https://static.wikia.nocookie.net/nintendo/images/3/3e/MPSS_Mario.png/revision/latest?cb=20211102010317&path-prefix=en");
+        values.put("webUrl", "https://nintendo.fandom.com/wiki/Mario");
+        db.insert(TABLE_NAME, null, values);
+
+        values.clear();
+        values.put("name", "Luigi");
+        values.put("description", "Mario's brother, often playing a supporting role.");
+        values.put("image", "https://static.wikia.nocookie.net/nintendo/images/7/76/SMPJ_Luigi.png/revision/latest?cb=20240911024916&path-prefix=en");
+        values.put("webUrl", "https://nintendo.fandom.com/wiki/Luigi");
+        db.insert(TABLE_NAME, null, values);
+
+        values.clear();
+        values.put("name", "Princess Peach");
+        values.put("description", "The princess of the Mushroom Kingdom.");
+        values.put("image", "https://static.wikia.nocookie.net/nintendo/images/d/db/Peach_%28Mario_Portal%29.png/revision/latest?cb=20230202133309&path-prefix=en");
+        values.put("webUrl", "https://nintendo.fandom.com/wiki/Princess_Peach");
+        db.insert(TABLE_NAME, null, values);
+
+        values.clear();
+        values.put("name", "Bowser");
+        values.put("description", "The King of the Koopas, Mario's arch-nemesis.");
+        values.put("image", "https://static.wikia.nocookie.net/nintendo/images/4/4b/Bowser_%28Mario_Portal%29.png/revision/latest?cb=20230107054523&path-prefix=en");
+        values.put("webUrl", "https://nintendo.fandom.com/wiki/Bowser");
+        db.insert(TABLE_NAME, null, values);
+
+        values.clear();
+        values.put("name", "Goomba");
+        values.put("description", "The Goomba is a common enemy in the Mario series, often encountered in levels.");
+        values.put("image", "https://static.wikia.nocookie.net/nintendo/images/d/d5/GoombaNSMB.png/revision/latest?cb=20110724131649&path-prefix=en");
+        values.put("webUrl", "https://nintendo.fandom.com/wiki/Goomba");
+        db.insert(TABLE_NAME, null, values);
     }
 
     @Override

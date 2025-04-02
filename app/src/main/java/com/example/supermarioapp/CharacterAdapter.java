@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.ViewHolder> {
@@ -30,6 +32,10 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
         Character character = characters.get(position);
         holder.name.setText(character.getName());
+
+        Glide.with(context)
+                .load(character.getImage())
+                .into(holder.image);
     }
 
     @Override
