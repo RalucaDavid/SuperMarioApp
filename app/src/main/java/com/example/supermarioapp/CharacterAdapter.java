@@ -8,49 +8,54 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.ViewHolder> {
-    private List<Character> characters;
+public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder> {
+    private List<Character> characterList;
     private Context context;
 
-    public CharacterAdapter(List<Character> characters, Context context) {
-        this.characters = characters;
+    public CharacterAdapter(List<Character> characterList, Context context) {
+        this.characterList = characterList;
         this.context = context;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CharacterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.character_item, parent, false);
-        return new ViewHolder(view);
+        return new CharacterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Character character = characters.get(position);
-        holder.name.setText(character.getName());
+    public void onBindViewHolder(CharacterViewHolder holder, int position) {
+        Character character = characterList.get(position);
 
+        // Setează textul pentru nume și descriere
+        holder.nameTextView.setText(character.getName());
+        holder.descriptionTextView.setText(character.getDescription());
+
+        // Folosește Glide pentru a încărca imaginea din URL
         Glide.with(context)
                 .load(character.getImage())
-                .into(holder.image);
+                .into(holder.characterImageView);
     }
 
     @Override
     public int getItemCount() {
-        return characters.size();
+        return characterList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        ImageView image;
+    public static class CharacterViewHolder extends RecyclerView.ViewHolder {
+        TextView nameTextView;
+        TextView descriptionTextView;
+        ImageView characterImageView;
 
-        public ViewHolder(View itemView) {
+        public CharacterViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.characterName);
-            image = itemView.findViewById(R.id.characterImage);
+            nameTextView = itemView.findViewById(R.id.character_name);
+            descriptionTextView = itemView.findViewById(R.id.character_description);
+            characterImageView = itemView.findViewById(R.id.character_image);
         }
     }
 }

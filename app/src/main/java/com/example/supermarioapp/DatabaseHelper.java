@@ -5,12 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "super-mario.db";
+    private static final String DATABASE_NAME = "supermario.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "characters";
 
