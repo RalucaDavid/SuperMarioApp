@@ -1,6 +1,9 @@
 package com.example.supermarioapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,5 +34,25 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(character.getImage())
                 .into(imageView);
+
+        Button moreInfoButton = findViewById(R.id.button_more_info);
+        Button webButton = findViewById(R.id.button_web_activity);
+
+        moreInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CharacterDetailsActivity.this, MoreInfoActivity.class);
+                intent.putExtra("character", character);
+                startActivity(intent);
+            }
+        });
+
+        webButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CharacterDetailsActivity.this, WebViewActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

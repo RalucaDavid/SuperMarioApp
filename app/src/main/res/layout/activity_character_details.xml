@@ -54,6 +54,32 @@
             android:textAlignment="center"
             android:padding="5dp"
             android:elevation="4dp"/>
+
+        <Button
+            android:id="@+id/button_more_info"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            android:padding="15dp"
+            android:text="More Information"
+            android:textSize="18sp"
+            android:textColor="#000000"/> />
+
+        <Button
+            android:id="@+id/button_web_activity"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Web Information"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:layout_centerHorizontal="true"
+            android:padding="15dp" 
+            android:elevation="4dp"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+
     </LinearLayout>
 
 </RelativeLayout>

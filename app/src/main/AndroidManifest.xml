@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CharacterDetailsActivity" />
+        <activity android:name=".MoreInfoActivity"/>
+        <activity android:name=".WebViewActivity"/>
     </application>
 
 </manifest>

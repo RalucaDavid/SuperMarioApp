@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "supermario-db.db";
+    private static final String DATABASE_NAME = "super-mario-db.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "characters";
 
@@ -31,7 +31,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values.put("name", "Mario");
         values.put("role", "Hero");
-        values.put("description", "The main character of the Super Mario series.");
+        values.put("description", "" +
+                "Mario is an Italian-American human who's occupation is a plumber. " +
+                "He wears his trademark bright red hat with the letter M on the front, " +
+                "white gloves, red shirt, blue overalls with two gold buttons and brown " +
+                "shoes. However, in his first appearance in Donkey Kong as well as his early " +
+                "appearances prior to Super Mario Bros. 3 and in the three classics DIC Entertainment " +
+                "cartoons, Mario wore a blue shirt and red overalls, which is the opposite of his " +
+                "current outfit."
+        );
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/3/3e/MPSS_Mario.png/revision/latest?cb=20211102010317&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Mario");
         db.insert(TABLE_NAME, null, values);
@@ -39,7 +47,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.clear();
         values.put("name", "Luigi");
         values.put("role", "Sidekick");
-        values.put("description", "Mario's brother, often playing a supporting role.");
+        values.put("description", "Luigi is Mario's younger brother. " +
+                "With that said, it's obvious that they would look the same. " +
+                "Unlike Mario's red clothes, Luigi wears a green undershirt, and dark blue overalls." +
+                " He is taller and thinner than Mario, has a longer neck, an ovoidal head instead of a " +
+                "round head, and has a different style of mustache and sideburns. He also wears a green hat " +
+                "that has a L on it. For some reason, in many games Luigi is referred to as names like \"the green" +
+                " guy\" or \"the man in green\".");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/7/76/SMPJ_Luigi.png/revision/latest?cb=20240911024916&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Luigi");
         db.insert(TABLE_NAME, null, values);
@@ -47,7 +61,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.clear();
         values.put("name", "Princess Peach");
         values.put("role", "Damsel");
-        values.put("description", "The princess of the Mushroom Kingdom.");
+        values.put("description", "" +
+                "Peach is generally known for being sweet, graceful, calm, sophisticated, and well-mannered." +
+                " Usually, she never shows aggressiveness when she fights or confronts her enemies." +
+                " She is also willing to have Bowser team up with her and the Mario Bros. when a more dangerous" +
+                " villain attacks the Mushroom Kingdom. She's also very friendly towards Luigi, despite not " +
+                "interacting with him as much as Mario.");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/d/db/Peach_%28Mario_Portal%29.png/revision/latest?cb=20230202133309&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Princess_Peach");
         db.insert(TABLE_NAME, null, values);
@@ -55,7 +74,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.clear();
         values.put("name", "Bowser");
         values.put("role", "Villain");
-        values.put("description", "The King of the Koopas, Mario's arch-nemesis.");
+        values.put("description", "Bowser is a huge, burl, green-shelled Koopa with spikes, horns, " +
+                "and hair. His bushy eyebrows and mane are fittingly a bright, fiery red-orange and has" +
+                " bright red eyes. He sports two small, horns, many spikes on his shell (similar to a Spiny)" +
+                " with brown-orange spike-rings, as well as along his tail (minus the spike-rings). " +
+                "He wears several spikes collars around his neck and arms. His neck collar in some games " +
+                "such as Mario Kart Tour is also implied to be part of his shell.");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/4/4b/Bowser_%28Mario_Portal%29.png/revision/latest?cb=20230107054523&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Bowser");
         db.insert(TABLE_NAME, null, values);
@@ -63,7 +87,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.clear();
         values.put("name", "Goomba");
         values.put("role", "Enemy");
-        values.put("description", "The Goomba is a common enemy in the Mario series, often encountered in levels.");
+        values.put("description", " Goombas resemble small brown mushrooms and are a fungus-based species like" +
+                " Toads, Amanitas, Spooks, and Shroobs. Goombas are physically weak and are not much of a threat" +
+                " to Mario or Luigi, since a single stomp usually defeats them, although a number of different" +
+                " Goomba variants have emerged throughout the years; however, they do drop hints of being much" +
+                " stronger and more competent than their appearances suggest, as in the case of Captain Goomba.");
         values.put("image", "https://static.wikia.nocookie.net/nintendo/images/d/d5/GoombaNSMB.png/revision/latest?cb=20110724131649&path-prefix=en");
         values.put("webUrl", "https://nintendo.fandom.com/wiki/Goomba");
         db.insert(TABLE_NAME, null, values);
