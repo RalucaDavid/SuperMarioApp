@@ -2,12 +2,9 @@ package com.example.supermarioapp;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.bumptech.glide.Glide;
 
 public class MoreInfoActivity extends AppCompatActivity {
     @Override

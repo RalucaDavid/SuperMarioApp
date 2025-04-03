@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.webkit.WebView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/characterWebView"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:background="#E60012"
+    android:padding="20dp">
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_revert"
+        android:contentDescription="@string/back_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" 
+        android:layout_marginStart="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <android.webkit.WebView
+            android:id="@+id/characterWebView"
+            android:layout_width="350dp" 
+            android:layout_height="700dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout> 
+
+</RelativeLayout>

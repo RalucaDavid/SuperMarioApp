@@ -51,6 +51,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CharacterDetailsActivity.this, WebViewActivity.class);
+                intent.putExtra("CHARACTER_URL", character.getWebUrl());
                 startActivity(intent);
             }
         });
