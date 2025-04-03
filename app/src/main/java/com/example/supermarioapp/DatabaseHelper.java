@@ -103,13 +103,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertCharacter(Character character) {
+    public void insertCharacter(String name, String role, String description, String image, String url) {
         SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT id FROM " + TABLE_NAME + " WHERE name = ?", new String[]{name});
+
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(0);
+            cursor.close();
+
+            Character existingCharacter = new Character(id, name, role, description, image, url);
+            updateCharacter(existingCharacter);
+
+            db.close();
+            return;
+        }
+
+        cursor.close();
+
         ContentValues values = new ContentValues();
-        values.put("name", character.getName());
-        values.put("description", character.getDescription());
-        values.put("image", character.getImage());
-        values.put("webUrl", character.getWebUrl());
+        values.put("name", name);
+        values.put("role", role);
+        values.put("description", description);
+        values.put("image", image);
+        values.put("webUrl", url);
+
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
@@ -118,6 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", character.getName());
+        values.put("role", character.getRole());
         values.put("description", character.getDescription());
         values.put("image", character.getImage());
         values.put("webUrl", character.getWebUrl());

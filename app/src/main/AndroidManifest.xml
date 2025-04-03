@@ -24,6 +24,7 @@
         <activity android:name=".CharacterDetailsActivity" />
         <activity android:name=".MoreInfoActivity"/>
         <activity android:name=".WebViewActivity"/>
+        <activity android:name=".CrudActivity"/>
     </application>
 
 </manifest>

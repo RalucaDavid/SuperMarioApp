@@ -3,25 +3,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#E60012"
+    android:padding="20dp">
 
-    <Button
-        android:id="@+id/addButton"
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_revert"
+        android:contentDescription="@string/back_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" 
+        android:layout_marginStart="8dp"/>
+
+    <EditText
+        android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add New Character"/>
+        android:textColor="#FFFFFF"
+        android:hint="Character Name" />
 
-    <Button
-        android:id="@+id/updateButton"
+    <EditText
+        android:id="@+id/editTextRole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Character"
-        android:layout_marginTop="16dp"/>
-
-    <Button
-        android:id="@+id/deleteButton"
+        android:textColor="#FFFFFF"
+        android:hint="Character Role" />
+    
+    <EditText
+        android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete Character"
-        android:layout_marginTop="16dp"/>
+        android:textColor="#FFFFFF"
+        android:hint="Character Description" />
+    
+    <EditText
+        android:id="@+id/editTextImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:hint="Character URL Image" />
+
+    <EditText
+        android:id="@+id/editTextUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:hint="Character URL Info" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Add changes" />
+
+    <ListView
+        android:id="@+id/listViewCharacters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

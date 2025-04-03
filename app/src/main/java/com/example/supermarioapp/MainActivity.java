@@ -2,6 +2,8 @@ package com.example.supermarioapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +26,22 @@ public class MainActivity extends AppCompatActivity implements CharacterClick {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         dbHelper = new DatabaseHelper(this);
+        loadCharacters();
+
+        Button editButton = findViewById(R.id.button_edit);
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CrudActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         loadCharacters();
     }
 
